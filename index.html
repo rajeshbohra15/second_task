@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Restaurant Menu</title>
+    <style type="text/css">
+        table {
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #cdcdcd;
+        }
+
+        table th,
+        table td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    	function add()
+    	{
+    		var name=document.getElementById("name");
+    		var message=document.getElementById("message");
+    		if(name.value=="")
+    		{
+    			text="Please Enter Resturant Name."
+    			message.innerHTML=text;
+    			return false;
+    		}
+    		else{
+    			
+    			document.getElementById('header1').innerHTML=document.myform.name.value;
+
+    			document.getElementById('tbl1').style.display='inline-block';
+    			if(document.getElementById)
+    			{
+    				document.myform.reset();
+    			}
+    		}
+      			
+    	}
+        $(document).ready(function() {
+            $(".add-row").click(function(e) {
+            	e.preventDefault(); 
+                var name = $("#dish").val();
+                var email = $("#price").val();
+
+    			var message1=document.getElementById("message1");
+    			var message2=document.getElementById("message2");
+                if(name=="")
+                {
+                	text="Please Enter Item Name."
+    				message1.innerHTML=text;
+                	return false;
+                }
+                if(email==""){
+                	text="Please Enter Price."
+    				message2.innerHTML=text;
+                	return false;
+                }
+
+                var markup = "<tr><td>"+name +"</td><td>"+ email+ "</td><td></td></tr>";
+                $("table tbody").append(markup);
+                
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+    <form name="myform">
+    	<div id="message"></div>
+		<input type="text" name="name" id="name" required autofocus>
+		<input type="button" id="btn" value="Submit" onclick="add();return false">
+	</form>
+    
+    <table id="tbl1" style="display: none;">
+    	<div style="width:25%;">
+    		<h1 id="header1" style="text-align: center"></h1> 
+      
+    	</div>
+        	
+        <thead>
+        	 
+            <tr>
+                <th>item Name</th>
+                <th>price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        	
+        </tbody>
+        <tfoot>
+
+            <tr class="table1">
+                <td><input type="text" id="dish" name="dish" placeholder="Name" required ><div id="message1"></div></td>
+                <td><input type="number" id="price" name="price" placeholder="Price" autofocus><div id="message2"></div></td>
+                <td><input type="button" class="add-row" value="Add Row"></td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
